@@ -1,0 +1,19 @@
+require_relative '../lib/cocoapods-localpodbinary/localpodbinary/localpodbinary'
+
+if ARGV[0] == Localpodbinary::STAGE_PRODUCE
+  Localpodbinary::produce
+elsif ARGV[0] == Localpodbinary::STAGE_CONSUME
+  Localpodbinary::consume
+elsif ARGV[0] == Localpodbinary::STAGE_PRINTENV
+  Localpodbinary::printenv
+elsif ARGV[0] == Localpodbinary::STAGE_CLREAN
+  Localpodbinary::clean
+else
+  puts "本地pod缓存插件"
+  puts "环境变量："
+  puts "LPB_CACHE_ROOT 可指定缓存路径"
+  puts "LPB_CACHE_COUNT 可指定缓存数量"
+  puts "LPB_NOT_DETECT_MODULE_MAP_DEPENDENCY 是否查找modulemap依赖"
+  puts "LPB_MIN_SOURCE_FILE_COUNT 指定库最小缓存文件数量，默认1，大于1才会缓存"
+  puts "LPB_CLEAR_ALL 清理所有缓存文件夹"
+end
